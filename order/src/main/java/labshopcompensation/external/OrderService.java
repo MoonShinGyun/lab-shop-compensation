@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "inventory", url = "${api.url.inventory}")
-public interface InventoryService {
-    @RequestMapping(method = RequestMethod.GET, path = "/inventories/{id}")
-    public Inventory getInventory(@PathVariable("id") Long id);
-    // keep
-
+@FeignClient(name = "order", url = "${api.url.order}")
+public interface OrderService {
+    @RequestMapping(method = RequestMethod.POST, path = "/orders")
+    public void order(@RequestBody Order order);
 }

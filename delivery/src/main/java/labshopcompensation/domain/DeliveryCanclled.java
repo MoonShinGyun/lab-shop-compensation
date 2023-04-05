@@ -7,18 +7,16 @@ import lombok.*;
 
 @Data
 @ToString
-public class DeliveryStarted extends AbstractEvent {
+public class DeliveryCanclled extends AbstractEvent {
 
     private Long id;
-    private String address;
     private String customerId;
-    private Integer quantity;
 
-    public DeliveryStarted(Delivery aggregate) {
+    public DeliveryCanclled(Delivery aggregate) {
         super(aggregate);
     }
 
-    public DeliveryStarted() {
+    public DeliveryCanclled() {
         super();
     }
 }
