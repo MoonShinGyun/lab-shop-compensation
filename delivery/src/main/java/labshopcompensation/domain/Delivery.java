@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import labshopcompensation.DeliveryApplication;
-import labshopcompensation.domain.DeliveryCanclled;
 import labshopcompensation.domain.DeliveryStarted;
 import lombok.Data;
 
@@ -25,13 +24,12 @@ public class Delivery {
 
     private Long orderId;
 
+    private String status;
+
     @PostPersist
     public void onPostPersist() {
         DeliveryStarted deliveryStarted = new DeliveryStarted(this);
         deliveryStarted.publishAfterCommit();
-
-        DeliveryCanclled deliveryCanclled = new DeliveryCanclled(this);
-        deliveryCanclled.publishAfterCommit();
     }
 
     public static DeliveryRepository repository() {
